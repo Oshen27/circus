@@ -1,7 +1,10 @@
-I'm a Duck
+I'm a circus.animal.Duck
 Quack Quack
 I'm a parrot
 Polly wants a cracker
+Adding item value: 10
+Adding item value: 15
+25
 Adding item value: 25
 Ignoring low value item: 1
 Adding item value: 33
