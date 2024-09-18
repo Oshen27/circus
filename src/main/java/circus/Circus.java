@@ -1,12 +1,15 @@
 package circus;
 
 import circus.animal.*;
+
+import circus.stuff.Cage;
 import circus.stuff.Cannon;
 import circus.stuff.Equipment;
 import circus.stuff.Ladder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
 
 import static circus.animal.Animal.animalNameComparator;
 
@@ -42,7 +45,18 @@ public class Circus {
         return total;
     }
 
+    private static void printAllAnimals(ArrayList<Animal> animalArrayList) {
+        for (Animal a : animalArrayList) {
+            System.out.println(a);
+        }
+    }
+
+    private static void printNumberOfAnimals(ArrayList<Animal> animalArrayList) {
+        System.out.println("Number of animals in the arraylist: " + animalArrayList.size());
+    }
+
     public static void main(String[] args) {
+
         ArrayList<Animal> animalArrayList = new ArrayList<>(Arrays.asList(animals));
         Elephant eli = new Elephant("Eli");
         animalArrayList.add(eli);
@@ -62,15 +76,28 @@ public class Circus {
 //        makeAnimalsTalk();
 //        System.out.println("Total value of animals " + calculateAssetValue(animals));
 //        System.out.println("Total value of equipments " + calculateAssetValue(equipments));
-    }
 
-    private static void printNumberOfAnimals(ArrayList<Animal> animalArrayList) {
-        System.out.println("Number of animals in the arraylist: " + animalArrayList.size());
-    }
 
-    private static void printAllAnimals(ArrayList<Animal> animalArrayList) {
-        for (Animal a : animalArrayList) {
-            System.out.println(a);
+
+        animalArrayList.add(new Tiger("Sherkhan"));
+        System.out.println("Number of animals: " + animalArrayList.size());
+
+
+        printAllAnimals(animalArrayList);
+
+        Cage<Duck> duckCage = new Cage<>();
+        Duck duck = new Duck("Donald");
+        duckCage.lockUp(duck);
+        Parrot parrot = new Parrot("Peter");
+        Cage<Parrot> parrotCage = new Cage<>();
+        parrotCage.lockUp(parrot);
+
+        ArrayList<Cage> cages = new ArrayList<>();
+        cages.add(duckCage);
+        cages.add(parrotCage);
+
+        for(Cage c: cages) {
+            c.release();
         }
     }
 }
